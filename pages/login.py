@@ -412,17 +412,13 @@ with right:
             use_container_width=True
         )
 
-        if login:
-
-            if username == "admin" and password == "12345":
-
-                st.session_state.logged_in = True
-
-                st.switch_page("pages/planner.py")
-
-            else:
-
-                st.error("Incorrect username or password.")
+if login:
+    if username.strip() and password:
+        st.session_state.logged_in = True
+        st.session_state.username = username.strip()
+        st.switch_page("pages/planner.py")
+    else:
+        st.error("Please enter a username and password.")
 
 
 # =========================
